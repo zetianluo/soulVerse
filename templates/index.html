@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPT-4 Application</title>
+</head>
+<body>
+    <h1>Welcome to SoulVerse</h1>
+    <p>Enter your message below:</p>
+    <form action="/gpt4" method="POST">
+        <input type="text" name="human_input" placeholder="Your message...">
+        <button type="submit">Send</button>
+    </form>
+    <hr>
+    {% if result %}
+    <h2>Response:</h2>
+    <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
