@@ -2,3 +2,6 @@ flask
 openai
 langchain
 pyttsx3
+pydub==0.25.1
+speechrecognition==3.10.0
+chroma
