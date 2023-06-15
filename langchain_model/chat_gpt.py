@@ -1,4 +1,3 @@
-# chat_gpt.py
 from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 
