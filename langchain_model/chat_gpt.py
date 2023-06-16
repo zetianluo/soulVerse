@@ -13,14 +13,13 @@ Grandfather's speech characteristics included classic sayings and proverbs, as h
 Human: {human_input}
 Assistant:"""
 
-
 prompt = PromptTemplate(
     input_variables=["history", "human_input"], 
     template=template
 )
 
 chatgpt_chain = LLMChain(
-    llm=OpenAI(temperature=0), 
+    llm=OpenAI(temperature=0, openai_api_key='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'), 
     prompt=prompt, 
     verbose=True, 
     memory=ConversationBufferWindowMemory(k=2),

@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>GPT-4 Application</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
     <h1>Welcome to SoulVerse</h1>
     <p>Enter your message below:</p>
-    <form action="/gpt4" method="POST">
-        <input type="text" name="human_input" placeholder="Your message...">
+    <form id="chat-form" action="/gpt4" method="POST">
+        <input id="message-input" type="text" name="human_input" placeholder="Your message...">
         <button type="submit">Send</button>
     </form>
     <hr>
