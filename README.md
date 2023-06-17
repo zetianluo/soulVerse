@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# soulVerse
-Engaging interactive project which leverages speech recognition and GPT-4's language understanding capabilities to offer voice-to-text input for a user-friendly chat experience.
-=======
 # HackBear
 
 ## Overview
@@ -34,4 +30,3 @@ This application is organized into several files:
 2. Improvements to UI for better user experience.
 3. Integration of other AI models for more advanced chat functionalities.
 
->>>>>>> master
