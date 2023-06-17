@@ -19,7 +19,7 @@ prompt = PromptTemplate(
 )
 
 chatgpt_chain = LLMChain(
-    llm=OpenAI(temperature=0, openai_api_key='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'), 
+    llm=OpenAI(temperature=0, openai_api_key='<YOUR-API-KEY>'), 
     prompt=prompt, 
     verbose=True, 
     memory=ConversationBufferWindowMemory(k=2),

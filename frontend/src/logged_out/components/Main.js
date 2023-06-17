@@ -5,9 +5,6 @@ import withStyles from '@mui/styles/withStyles';
 import NavBar from "./navigation/NavBar";
 import Footer from "./footer/Footer";
 import "aos/dist/aos.css";
-// import CookieRulesDialog from "./cookies/CookieRulesDialog";
-// import CookieConsent from "./cookies/CookieConsent";
-import dummyBlogPosts from "../dummy_data/blogPosts";
 import DialogSelector from "./register_login/DialogSelector";
 import Routing from "./Routing";
 import smoothScrollTop from "../../shared/functions/smoothScrollTop";
@@ -27,8 +24,7 @@ function Main(props) {
   const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const [blogPosts, setBlogPosts] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(null);
-  // const [isCookieRulesDialogOpen, setIsCookieRulesDialogOpen] = useState(false);
-
+ 
   const selectHome = useCallback(() => {
     smoothScrollTop();
     document.title =
@@ -72,40 +68,8 @@ function Main(props) {
     setDialogOpen("changePassword");
   }, [setDialogOpen]);
 
-  const fetchBlogPosts = useCallback(() => {
-    const blogPosts = dummyBlogPosts.map((blogPost) => {
-      let title = blogPost.title;
-      title = title.toLowerCase();
-      /* Remove unwanted characters, only accept alphanumeric and space */
-      title = title.replace(/[^A-Za-z0-9 ]/g, "");
-      /* Replace multi spaces with a single space */
-      title = title.replace(/\s{2,}/g, " ");
-      /* Replace space with a '-' symbol */
-      title = title.replace(/\s/g, "-");
-      blogPost.url = `/blog/post/${title}`;
-      blogPost.params = `?id=${blogPost.id}`;
-      return blogPost;
-    });
-    setBlogPosts(blogPosts);
-  }, [setBlogPosts]);
-
-  // const handleCookieRulesDialogOpen = useCallback(() => {
-  //   setIsCookieRulesDialogOpen(true);
-  // }, [setIsCookieRulesDialogOpen]);
-
-  // const handleCookieRulesDialogClose = useCallback(() => {
-  //   setIsCookieRulesDialogOpen(false);
-  // }, [setIsCookieRulesDialogOpen]);
-
-  useEffect(fetchBlogPosts, [fetchBlogPosts]);
-
   return (
     <div className={classes.wrapper}>
-      {/* {!isCookieRulesDialogOpen && (
-        <CookieConsent
-          handleCookieRulesDialogOpen={handleCookieRulesDialogOpen}
-        />
-      )} */}
       <DialogSelector
         openLoginDialog={openLoginDialog}
         dialogOpen={dialogOpen}
@@ -114,10 +78,6 @@ function Main(props) {
         openRegisterDialog={openRegisterDialog}
         openChangePasswordDialog={openChangePasswordDialog}
       />
-       {/* <CookieRulesDialog
-        open={isCookieRulesDialogOpen}
-        onClose={handleCookieRulesDialogClose}
-       /> */}
       <NavBar
         selectedTab={selectedTab}
         selectTab={setSelectedTab}
@@ -128,9 +88,7 @@ function Main(props) {
         handleMobileDrawerClose={handleMobileDrawerClose}
       />
       <Routing
-        blogPosts={blogPosts}
         selectHome={selectHome}
-        selectBlog={selectBlog}
       />
       <Footer />
     </div>

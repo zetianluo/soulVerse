@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { TextField, Button, List, ListItem, Paper, Avatar, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { TextField, Button, List, ListItem, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import MicIcon from '@mui/icons-material/Mic';
+import { Avatar } from '@mui/material';
 import GrandmaAvatar from './grandma.png';
 import axios from 'axios';
+
 
 const useStyles = makeStyles({
   chatContainer: {
@@ -45,33 +46,10 @@ const useStyles = makeStyles({
   }
 });
 
-// Web Speech API for speech recognition
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
-recognition.lang = 'en-US'; // English language
-recognition.interimResults = true;
-
 function ChatBox() {
   const classes = useStyles();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [listening, setListening] = useState(false);
-
-  const toggleListen = () => {
-    if (!listening) {
-      recognition.start();
-      recognition.onresult = event => {
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          if (event.results[i].isFinal) {
-            setInput(input + event.results[i][0].transcript);
-          }
-        }
-      };
-    } else {
-      recognition.stop();
-    }
-    setListening(!listening);
-  };
 
   const handleSend = (event) => {
     event.preventDefault();
@@ -81,7 +59,20 @@ function ChatBox() {
       })
       .then(function (response) {
         let output = response.data.output; // the output from GPT-4 API
-        setMessages([...messages, {text: output}]);
+        let emotions = response.data.emotions;
+        let emotionsString = "";
+
+        for(let i = 0; i < emotions.length; i++) {
+          let emotion = emotions[i];
+          let text = emotion.text;
+          let scores = emotion.emotions;
+          emotionsString += text + ": \n";
+          for(let j = 0; j < scores.length; j++) {
+            let score = scores[j];
+            emotionsString += score.name + ": " + score.score + "\n";
+          }
+        }
+        setMessages([...messages, {text: input, emotion: emotionsString}]);
       })
       .catch(function (error) {
         console.log(error);
@@ -96,6 +87,7 @@ function ChatBox() {
          {messages.map((message, index) => (
            <ListItem key={index} className={classes.chatItem}>
              <div>{message.text}</div>
+             <div>{message.emotion}</div>
              <Avatar src={GrandmaAvatar} />
            </ListItem>
          ))}
@@ -106,9 +98,6 @@ function ChatBox() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <IconButton onClick={toggleListen}>
-          <MicIcon />
-        </IconButton>
         <Button variant="contained" color="primary" type="submit">
           Send
         </Button>

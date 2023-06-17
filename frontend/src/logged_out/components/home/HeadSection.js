@@ -6,6 +6,8 @@ import withStyles from "@mui/styles/withStyles";
 import WaveBorder from "../../../shared/components/WaveBorder";
 import ZoomImage from "../../../shared/components/ZoomImage";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import image from "./headerImage.png";
+
 
 const styles = (theme) => ({
   extraLargeButtonLabel: {
@@ -144,7 +146,6 @@ function HeadSection(props) {
                           fullWidth
                           className={classes.extraLargeButton}
                           classes={{ label: classes.extraLargeButtonLabel }}
-                          // href="https://github.com/dunky11/react-saas-template"
                         >
                           Talk with your Grandparents
                         </Button>
@@ -154,7 +155,7 @@ function HeadSection(props) {
                   <Hidden mdDown>
                     <Grid item md={6}>
                       <ZoomImage
-                        src={`${process.env.PUBLIC_URL}/images/logged_out/headerImage.png`}
+                        src= {image}
                         className={classes.image}
                         alt="header example"
                       />

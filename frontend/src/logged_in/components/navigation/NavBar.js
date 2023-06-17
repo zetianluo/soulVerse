@@ -19,10 +19,10 @@ import {
 } from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ImageIcon from "@mui/icons-material/Image";
+// import ImageIcon from "@mui/icons-material/Image";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
@@ -31,6 +31,7 @@ import NavigationDrawer from "../../../shared/components/NavigationDrawer";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ElderlyWomanIcon from '@mui/icons-material/ElderlyWoman';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 const styles = (theme) => ({
   appBar: {
@@ -168,40 +169,40 @@ function NavBar(props) {
         mobile: <DashboardIcon className="text-white" />,
       },
     },
-    {
-      link: "/c/posts",
-      name: "Posts",
-      // onClick: closeMobileDrawer,
-      icon: {
-        desktop: (
-          <ImageIcon
-            className={
-              selectedTab === "Posts" ? classes.textPrimary : "text-white"
-            }
-            fontSize="small"
-          />
-        ),
-        mobile: <ImageIcon className="text-white" />,
-      },
-    },
-    {
-      link: "/c/subscription",
-      name: "Subscription",
-      onClick: closeMobileDrawer,
-      icon: {
-        desktop: (
-          <AccountBalanceIcon
-            className={
-              selectedTab === "Subscription"
-                ? classes.textPrimary
-                : "text-white"
-            }
-            fontSize="small"
-          />
-        ),
-        mobile: <AccountBalanceIcon className="text-white" />,
-      },
-    },
+    // {
+    //   link: "/c/posts",
+    //   name: "Posts",
+    //   // onClick: closeMobileDrawer,
+    //   icon: {
+    //     desktop: (
+    //       // <ImageIcon
+    //       //   className={
+    //       //     selectedTab === "Posts" ? classes.textPrimary : "text-white"
+    //       //   }
+    //       //   fontSize="small"
+    //       // />
+    //     ),
+    //     mobile: <ImageIcon className="text-white" />,
+    //   },
+    // },
+    // {
+    //   link: "/c/subscription",
+    //   name: "Subscription",
+    //   onClick: closeMobileDrawer,
+    //   icon: {
+    //     desktop: (
+    //       <AccountBalanceIcon
+    //         className={
+    //           selectedTab === "Subscription"
+    //             ? classes.textPrimary
+    //             : "text-white"
+    //         }
+    //         fontSize="small"
+    //       />
+    //     ),
+    //     mobile: <AccountBalanceIcon className="text-white" />,
+    //   },
+    // },
     {
       link: "/c/young",
       name: "Young",
@@ -239,6 +240,24 @@ function NavBar(props) {
       },
     },
     {
+      link: "/c/funeral",
+      name: "Funeral",
+      onClick: closeMobileDrawer,
+      icon: {
+        desktop: (
+          <AutoStoriesIcon
+            className={
+              selectedTab === "Funeral"
+                ? classes.textPrimary
+                : "text-white"
+            }
+            fontSize="small"
+          />
+        ),
+        mobile: <AutoStoriesIcon className="text-white" />,
+      },
+    },
+    {
       link: "/",
       name: "Logout",
       icon: {
@@ -262,7 +281,7 @@ function NavBar(props) {
                   color="primary"
                   size="large"
                 >
-                  <MenuIcon />
+                  {/* <MenuIcon /> */}
                 </IconButton>
               </Box>
             </Hidden>

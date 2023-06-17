@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
-import { TextField, Button, List, ListItem, Paper, Avatar, IconButton } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { alpha } from '@mui/system';
+import { TextField, Button, List, ListItem, Paper, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { Avatar } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import GrandmaAvatar from './grandma.png';
 import axios from 'axios';
+
+// Web Speech API for speech recognition
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.lang = 'en-US';
+
+
+recognition.interimResults = true;
 
 const useStyles = makeStyles({
   chatContainer: {
@@ -18,8 +28,11 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   decorativeFrame: {
-    border: '5px solid #FFD700', // gold decorative border
+    border: `5px solid ${alpha('#FFD700', 0.6)}`, // gold decorative border
     borderRadius: '20px',
+    // backgroundImage: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    backgroundImage: 'linear-gradient(45deg, #888888 30%, #CCCCCC 90%)',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
   },
   chatList: {
     overflowY: 'scroll',
@@ -33,23 +46,27 @@ const useStyles = makeStyles({
     margin: '5px auto',
     borderRadius: '20px',
     padding: '10px',
-    backgroundColor: '#e0e0f0',
+    backgroundColor: '#e0e0e0',
   },
   chatInput: {
     width: '100%',
+    backgroundColor: '#FFFFFF', // white background
+    borderRadius: '5px', // rounded corners
+    border: '1px solid #ccc', // light gray border
+    boxShadow: '0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)',
   },
   form: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-  }
+  },
+  sendButton: {
+    //backgroundImage: 'linear-gradient(45deg, #8C05EE 30%, #DB05EE 90%)',
+    backgroundImage: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    color: 'white', // white text
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  },
 });
-
-// Web Speech API for speech recognition
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition = new SpeechRecognition();
-recognition.lang = 'en-US'; // English language
-recognition.interimResults = true;
 
 function ChatBox() {
   const classes = useStyles();
@@ -59,7 +76,7 @@ function ChatBox() {
 
   const toggleListen = () => {
     if (!listening) {
-      recognition.start();
+      recognition.start(); 
       recognition.onresult = event => {
         for (let i = event.resultIndex; i < event.results.length; i++) {
           if (event.results[i].isFinal) {
@@ -81,7 +98,7 @@ function ChatBox() {
       })
       .then(function (response) {
         let output = response.data.output; // the output from GPT-4 API
-        setMessages([...messages, {text: output}]);
+        setMessages([...messages, {text: input, output: output}]);
       })
       .catch(function (error) {
         console.log(error);
@@ -95,7 +112,10 @@ function ChatBox() {
       <List className={classes.chatList}>
          {messages.map((message, index) => (
            <ListItem key={index} className={classes.chatItem}>
-             <div>{message.text}</div>
+             <div>
+                <strong>User:</strong> {message.text} <br/>
+                <strong>Response:</strong> {message.output}
+             </div>
              <Avatar src={GrandmaAvatar} />
            </ListItem>
          ))}
@@ -109,7 +129,7 @@ function ChatBox() {
         <IconButton onClick={toggleListen}>
           <MicIcon />
         </IconButton>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="primary" type="submit" className={classes.sendButton}>
           Send
         </Button>
       </form>

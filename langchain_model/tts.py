@@ -1,12 +1,16 @@
 from gtts import gTTS
 from pydub import AudioSegment
+import os
 
-# Function to convert text to speech and save as an audio file
 def convert_text_to_speech(text, filename):
     # Create a temporary mp3 file
     tts = gTTS(text)
-    tts.save(filename + ".mp3")
+    temp_filename = filename + ".mp3"
+    tts.save(temp_filename)
 
     # Convert mp3 file to wav
-    sound = AudioSegment.from_mp3(filename + ".mp3")
-    sound.export(filename + ".wav", format="wav")
+    sound = AudioSegment.from_mp3(temp_filename)
+    sound.export(filename, format="wav")
+
+    # Delete the temporary mp3 file
+    os.remove(temp_filename)

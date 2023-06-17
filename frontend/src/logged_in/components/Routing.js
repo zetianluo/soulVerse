@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
 import withStyles from '@mui/styles/withStyles';
 import Dashboard from "./dashboard/Dashboard";
-import Posts from "./posts/Posts";
-import Subscription from "./subscription/Subscription";
 import PropsRoute from "../../shared/components/PropsRoute";
 import Old from "./chatbot/ChatbotVideo";
+import Funeral from "./chatbot/Young/ChatbotVideoYoung";
+import Young from "./chatbot/ChatbotVideo(after)";
 import useLocationBlocker from "../../shared/functions/useLocationBlocker";
 
 const styles = (theme) => ({
@@ -52,19 +52,17 @@ function Routing(props) {
     Dropzone,
     DateTimePicker,
     pushMessageToSnackbar,
-    posts,
     transactions,
     toggleAccountActivation,
     CardChart,
     statistics,
     targets,
     setTargets,
-    setPosts,
     isAccountActivated,
     selectDashboard,
-    selectPosts,
     selectSubscription,
     selectOld,
+    selectYoung,
     openAddBalanceDialog,
   } = props;
   useLocationBlocker();
@@ -72,28 +70,16 @@ function Routing(props) {
     <div className={classes.wrapper}>
       <Switch>
         <PropsRoute
-          path="/c/posts"
-          component={Posts}
-          EmojiTextArea={EmojiTextArea}
-          ImageCropper={ImageCropper}
-          Dropzone={Dropzone}
-          DateTimePicker={DateTimePicker}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          posts={posts}
-          setPosts={setPosts}
-          selectPosts={selectPosts}
-        />
-        <PropsRoute
-          path="/c/subscription"
-          component={Subscription}
-          transactions={transactions}
-          pushMessageToSnackbar={pushMessageToSnackbar}
-          selectSubscription={selectSubscription}
-          openAddBalanceDialog={openAddBalanceDialog}
-        />
-        <PropsRoute
           path="/c/old"
           component={Old}
+        />
+        <PropsRoute
+          path="/c/funeral"
+          component={Funeral}
+        />
+        <PropsRoute
+          path = "/c/young"
+          component={Young}
         />
         <PropsRoute
           path=""
@@ -120,8 +106,6 @@ Routing.propTypes = {
   DateTimePicker: PropTypes.elementType,
   pushMessageToSnackbar: PropTypes.func,
   setTargets: PropTypes.func.isRequired,
-  setPosts: PropTypes.func.isRequired,
-  posts: PropTypes.arrayOf(PropTypes.object).isRequired,
   transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
   toggleAccountActivation: PropTypes.func,
   CardChart: PropTypes.elementType,
@@ -129,7 +113,6 @@ Routing.propTypes = {
   targets: PropTypes.arrayOf(PropTypes.object).isRequired,
   isAccountActivated: PropTypes.bool.isRequired,
   selectDashboard: PropTypes.func.isRequired,
-  selectPosts: PropTypes.func.isRequired,
   selectSubscription: PropTypes.func.isRequired,
   openAddBalanceDialog: PropTypes.func.isRequired,
 };
