@@ -20,7 +20,7 @@ const iconSize = 50;
 const features = [
   {
     color: "#00C853",
-    headline: "Feature 1",
+    headline: "Forever Companion",
     text: "What Feature do we want to add here?",
     icon: <BuildIcon style={{ fontSize: iconSize }} />,
     mdDelay: "0",
@@ -28,7 +28,7 @@ const features = [
   },
   {
     color: "#6200EA",
-    headline: "Feature 2",
+    headline: "Emotion Recognition",
     text: "What Feature do we want to add here?",
     icon: <CalendarTodayIcon style={{ fontSize: iconSize }} />,
     mdDelay: "200",
@@ -36,7 +36,7 @@ const features = [
   },
   {
     color: "#0091EA",
-    headline: "Feature 3",
+    headline: "",
     text: "What Feature do we want to add here?",
     icon: <MeassageIcon style={{ fontSize: iconSize }} />,
     mdDelay: "400",
@@ -66,31 +66,7 @@ const features = [
     mdDelay: "400",
     smDelay: "200",
   },
-  // {
-  //   color: "#304FFE",
-  //   headline: "Feature 7",
-  //   text: "What Feature do we want to add here?",
-  //   icon: <CloudIcon style={{ fontSize: iconSize }} />,
-  //   mdDelay: "0",
-  //   smDelay: "0",
-  // },
-  // {
-  //   color: "#C51162",
-  //   headline: "Feature 8",
-  //   text: "What Feature do we want to add here?",
-  //   icon: <CodeIcon style={{ fontSize: iconSize }} />,
-  //   mdDelay: "200",
-  //   smDelay: "200",
-  // },
-  // {
-  //   color: "#00B8D4",
-  //   headline: "Feature 9",
-  //   text: "What Feature do we want to add here?",
-  //   icon: <CancelIcon style={{ fontSize: iconSize }} />,
-  //   mdDelay: "400",
-  //   smDelay: "0",
-  // },
-];
+]
 
 function FeatureSection(props) {
   const { theme } = props;
