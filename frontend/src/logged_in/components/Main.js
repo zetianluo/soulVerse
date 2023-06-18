@@ -25,28 +25,12 @@ function Main(props) {
   const [selectedTab, setSelectedTab] = useState(null);
   const [CardChart, setCardChart] = useState(null);
   const [hasFetchedCardChart, setHasFetchedCardChart] = useState(false);
-  // const [EmojiTextArea, setEmojiTextArea] = useState(null);
-  // const [hasFetchedEmojiTextArea, setHasFetchedEmojiTextArea] = useState(false);
-  // const [ImageCropper, setImageCropper] = useState(null);
-  // const [hasFetchedImageCropper, setHasFetchedImageCropper] = useState(false);
-  // const [Dropzone, setDropzone] = useState(null);
-  // const [hasFetchedDropzone, setHasFetchedDropzone] = useState(false);
-  // const [DateTimePicker, setDateTimePicker] = useState(null);
-  // const [hasFetchedDateTimePicker, setHasFetchedDateTimePicker] = useState(
-  //   false
-  // );
-  // const [transactions, setTransactions] = useState([]);
   const [statistics, setStatistics] = useState({ views: [], profit: [] });
   const [posts, setPosts] = useState([]);
   const [targets, setTargets] = useState([]);
   const [messages, setMessages] = useState([]);
   const [isAccountActivated, setIsAccountActivated] = useState(false);
-  // const [isAddBalanceDialogOpen, setIsAddBalanceDialogOpen] = useState(false);
   const [pushMessageToSnackbar, setPushMessageToSnackbar] = useState(null);
-
-  // const openAddBalanceDialog = useCallback(() => {
-  //   setIsAddBalanceDialogOpen(true);
-  // }, [setIsAddBalanceDialogOpen]);
 
   const toggleAccountActivation = useCallback(() => {
     if (pushMessageToSnackbar) {
@@ -99,6 +83,13 @@ function Main(props) {
     setSelectedTab("Funeral");
   },[setSelectedTab])
 
+
+  const selectDataCenter = useCallback(() => {
+      smoothScrollTop();
+      document.title="ComeTrue - DataCenter";
+      setSelectedTab("DataCenter");
+    },[setSelectedTab])
+
   const getPushMessageFromChild = useCallback(
     (pushMessage) => {
       setPushMessageToSnackbar(() => pushMessage);
@@ -134,6 +125,7 @@ function Main(props) {
           selectOld={selectOld}
           selectYoung={selectYoung}
           selectFuneral={selectFuneral}
+          selectDataCenter = {selectDataCenter}
           // openAddBalanceDialog={openAddBalanceDialog}
           setTargets={setTargets}
           setPosts={setPosts}

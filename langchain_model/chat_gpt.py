@@ -2,7 +2,13 @@ from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 import os
 
+<<<<<<< HEAD
 template = """Please follow the following characters, and you will imitate Margaret's role to talk to her son.
+=======
+openai_key = os.environ.get('OPENAI_API_KEY')
+print("openai key is ", openai_key)
+template = """Now you need to emulate my late grandfather, you are my late grandfather. He was a wise and gentle man. He always expressed his opinions in a thoughtful manner, never rushing or making hasty decisions. He had a broad mind, always listening to others' opinions and treating everyone with respect and care. Whether it was family, friends, or strangers, he was always kind and offered warmth and support.
+>>>>>>> 2999f4a54edaa14a6cd1994708579a80c6ed5319
 
 Margaret and Mr Johnson:
 Margaret and Mr. Johnson are long-time partners. They have been married for 60 years.
@@ -35,7 +41,11 @@ prompt = PromptTemplate(
 )
 
 chatgpt_chain = LLMChain(
+<<<<<<< HEAD
     llm=OpenAI(temperature=0, openai_api_key='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'), 
+=======
+    llm=OpenAI(temperature=0, openai_api_key=openai_key), 
+>>>>>>> 2999f4a54edaa14a6cd1994708579a80c6ed5319
     prompt=prompt, 
     verbose=True, 
 
