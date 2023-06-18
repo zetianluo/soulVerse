@@ -6,6 +6,7 @@ import { Avatar } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import GrandmaAvatar from './grandma.png';
 import axios from 'axios';
+import RobotAvatar from '@mui/icons-material/SmartToy';
 
 // Web Speech API for speech recognition
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -90,51 +91,67 @@ function ChatBox() {
     setListening(!listening);
   };
 
-  const handleSend = (event) => {
-    event.preventDefault();
-    if (input.trim() !== '') {
-      axios.post('/gpt4', {
-        message: input
-      })
-      .then(function (response) {
-        let output = response.data.output; // the output from GPT-4 API
-        setMessages([...messages, {text: input, output: output}]);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      setInput('');
-    }
-  };
+// const handleSend = (event) => {
+//   event.preventDefault();
+//   if (input.trim() !== '') {
+//     setMessages([...messages, {text: input, sender: 'user'}]); // User message
+//     axios.post('/gpt4', {
+//       message: input
+//     })
+//     .then(function (response) {
+//       let output = response.data.output; // the output from GPT-4 API
+//       setMessages([...messages, {text: input, sender: 'user'}, {text: output, sender: 'robot'}]); // Robot message
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+//     setInput('');
+//   }
+// };
 
-  return (
-    <Paper className={`${classes.chatContainer} ${classes.decorativeFrame}`}>
-      <List className={classes.chatList}>
-         {messages.map((message, index) => (
-           <ListItem key={index} className={classes.chatItem}>
-             <div>
-                <strong>User:</strong> {message.text} <br/>
-                <strong>Response:</strong> {message.output}
-             </div>
-             <Avatar src={GrandmaAvatar} />
-           </ListItem>
-         ))}
-       </List>
-      <form onSubmit={handleSend} className={classes.form}>
-        <TextField
-          className={classes.chatInput}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <IconButton onClick={toggleListen}>
-          <MicIcon />
-        </IconButton>
-        <Button variant="contained" color="primary" type="submit" className={classes.sendButton}>
-          Send
-        </Button>
-      </form>
-    </Paper>
-  );
+const handleSend = (event) => {
+  event.preventDefault();
+  if (input.trim() !== '') {
+    setMessages(prevMessages => [...prevMessages, {text: input, sender: 'user'}]); // User message
+    axios.post('/gpt4', {
+      message: input
+    })
+    .then(function (response) {
+      let output = response.data.output; // the output from GPT-4 API
+      setMessages(prevMessages => [...prevMessages, {text: input, sender: 'user'}, {text: output, sender: 'robot'}]); // Robot message
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    setInput('');
+  }
+};
+
+return (
+  <Paper className={`${classes.chatContainer} ${classes.decorativeFrame}`}>
+    <List className={classes.chatList}>
+       {messages.map((message, index) => (
+         <ListItem key={index} className={classes.chatItem}>
+           <div>{message.text}</div>
+           <Avatar src={message.sender === 'user' ? GrandmaAvatar : RobotAvatar} />
+         </ListItem>
+       ))}
+     </List>
+    <form onSubmit={handleSend} className={classes.form}>
+      <TextField
+        className={classes.chatInput}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <IconButton onClick={toggleListen}>
+        <MicIcon />
+      </IconButton>
+      <Button variant="contained" color="primary" type="submit">
+        Send
+      </Button>
+    </form>
+  </Paper>
+);
 }
 
 export default ChatBox;

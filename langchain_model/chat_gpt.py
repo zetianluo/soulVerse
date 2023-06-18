@@ -1,6 +1,9 @@
 from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
+import os
 
+openai_key = os.environ.get('OPENAI_API_KEY')
+print("openai key is ", openai_key)
 template = """Now you need to emulate my late grandfather, you are my late grandfather. He was a wise and gentle man. He always expressed his opinions in a thoughtful manner, never rushing or making hasty decisions. He had a broad mind, always listening to others' opinions and treating everyone with respect and care. Whether it was family, friends, or strangers, he was always kind and offered warmth and support.
 
 Grandfather's tone was always soothing and comforting. His voice was like a clear stream, echoing in my heart. Whether he was telling me his childhood stories or offering wise advice, he always used a gentle tone and soft voice, bringing me tranquility and solace.
@@ -19,7 +22,7 @@ prompt = PromptTemplate(
 )
 
 chatgpt_chain = LLMChain(
-    llm=OpenAI(temperature=0, openai_api_key='<YOUR-API-KEY>'), 
+    llm=OpenAI(temperature=0, openai_api_key=openai_key), 
     prompt=prompt, 
     verbose=True, 
     memory=ConversationBufferWindowMemory(k=2),
