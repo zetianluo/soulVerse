@@ -117,7 +117,7 @@ function HeadSection(props) {
                     >
                       <Box mb={4}>
                         <Typography variant={isWidthUpLg ? "h3" : "h4"}>
-                          CalHacks:Name of our Project
+                          SoulVerse
                         </Typography>
                       </Box>
                       <div>

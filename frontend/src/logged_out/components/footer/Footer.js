@@ -76,7 +76,7 @@ const styles = (theme) => ({
 const infos = [
   {
     icon: <PhoneIcon />,
-    description: "+1 555 123456",
+    description: "+1 555 1234567",
   },
   {
     icon: <MailIcon />,
@@ -227,7 +227,7 @@ function Footer(props) {
               About Our Group
             </Typography>
             <Typography style={{ color: "#8f9296" }} paragraph>
-              Briefly introduce our group
+              We are HackBears!
             </Typography>
             <Box display="flex">
               {socialIcons.map((socialIcon, index) => (
