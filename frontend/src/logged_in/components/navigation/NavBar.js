@@ -19,8 +19,8 @@ import {
 } from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import MessagePopperButton from "./MessagePopperButton";
+// import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+// import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
 import Balance from "./Balance";
 import NavigationDrawer from "../../../shared/components/NavigationDrawer";
@@ -33,7 +33,7 @@ import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 const styles = (theme) => ({
   appBar: {
     boxShadow: theme.shadows[6],
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.common.black,// 'linear-gradient(to left bottom, #627f7f7f, #40616a, #254354, #14263c, #0c0422)', // "#314343", // theme.palette.common.white,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -44,6 +44,7 @@ const styles = (theme) => ({
     },
   },
   appBarToolbar: {
+    color: "#000000", 
     display: "flex",
     justifyContent: "space-between",
     paddingLeft: theme.spacing(1),
@@ -257,15 +258,15 @@ function NavBar(props) {
                 display="inline"
                 color="primary"
               >
-                Come
+                Soul
               </Typography>
               <Typography
                 variant="h4"
                 className={classes.brandText}
                 display="inline"
-                color="secondary"
+                color="#c2088d"
               >
-                True
+                Verse
               </Typography>
             </Hidden>
           </Box>
@@ -277,13 +278,13 @@ function NavBar(props) {
           >
             {isWidthUpSm && (
               <Box mr={3}>
-                <Balance
+                {/* <Balance
                   balance={2573}
                   openAddBalanceDialog={openAddBalanceDialog}
-                />
+                /> */}
               </Box>
             )}
-            <MessagePopperButton messages={messages} />
+            {/* <MessagePopperButton messages={messages} /> */}
             <ListItem
               disableGutters
               className={classNames(classes.iconListItem, classes.smBordered)}
@@ -297,7 +298,7 @@ function NavBar(props) {
                 <ListItemText
                   className={classes.username}
                   primary={
-                    <Typography color="textPrimary">Username</Typography>
+                    <Typography color="#ffffff">Maggie</Typography>
                   }
                 />
               )}
@@ -309,9 +310,9 @@ function NavBar(props) {
             aria-label="Open Sidedrawer"
             size="large"
           >
-            <SupervisorAccountIcon />
+            {/* <SupervisorAccountIcon /> */}
           </IconButton>
-          <SideDrawer open={isSideDrawerOpen} onClose={closeDrawer} />
+          {/* <SideDrawer open={isSideDrawerOpen} onClose={closeDrawer} /> */}
         </Toolbar>
       </AppBar>
       <Hidden smDown>

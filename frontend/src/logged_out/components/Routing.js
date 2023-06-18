@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
 import PropsRoute from "../../shared/components/PropsRoute";
 import Home from "./home/Home";
+import MUI from "./home/MUI";
 import useLocationBlocker from "../../shared/functions/useLocationBlocker";
 
 function Routing(props) {
@@ -20,3 +21,28 @@ Routing.propTypes = {
 };
 
 export default memo(Routing);
+
+
+// import React, { memo } from "react";
+// import PropTypes from "prop-types";
+// import { Switch } from "react-router-dom";
+// import PropsRoute from "../../shared/components/PropsRoute";
+// import Home from "./home/Home";
+// import MUI from "./home/MUI";
+// import useLocationBlocker from "../../shared/functions/useLocationBlocker";
+
+// function Routing(props) {
+//   const { selectMUI } = props;
+//   useLocationBlocker();
+//   return (
+//     <Switch>
+//       <PropsRoute path="/" component={MUI} selectHome={selectMUI} />
+//     </Switch>
+//   );
+// }
+
+// Routing.propTypes = {
+//   selectMUI: PropTypes.func.isRequired,
+// };
+
+// export default memo(Routing);

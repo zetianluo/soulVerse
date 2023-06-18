@@ -29,9 +29,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   decorativeFrame: {
-    border: `5px solid ${alpha('#FFD700', 0.6)}`, // gold decorative border
     borderRadius: '20px',
-    // backgroundImage: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     backgroundImage: 'linear-gradient(45deg, #888888 30%, #CCCCCC 90%)',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
   },
@@ -63,7 +61,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
   sendButton: {
-    //backgroundImage: 'linear-gradient(45deg, #8C05EE 30%, #DB05EE 90%)',
     backgroundImage: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     color: 'white', // white text
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

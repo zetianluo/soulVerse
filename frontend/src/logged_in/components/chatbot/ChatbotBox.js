@@ -153,10 +153,10 @@ function ChatBox() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <IconButton onClick={toggleListen}>
+        <IconButton onClick={toggleListen} color='success'>
           <MicIcon />
         </IconButton>
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="success" type="submit">
           Send
         </Button>
       </form>

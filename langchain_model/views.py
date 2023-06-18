@@ -33,24 +33,24 @@ def create_blueprint(socketio):
         text = data['message'] # Get the message from the request
         try:
             output = generate_chat(text)
-            filename_output = "output_gpt4.wav"
-            convert_text_to_speech(output, filename_output) # Convert the output to speech
+            # filename_output = "output_gpt4.wav"
+            # convert_text_to_speech(output, filename_output) # Convert the output to speech
 
             # Open the file in binary mode and read it
-            with open(os.path.join(os.getcwd(), filename_output), 'rb') as file:
-                file_content = file.read()
+            # with open(os.path.join(os.getcwd(), filename_output), 'rb') as file:
+            #     file_content = file.read()
 
             # Convert the file content to a base64 string
-            base64_content = base64.b64encode(file_content).decode()
+            # base64_content = base64.b64encode(file_content).decode()
 
             # Prepare the response data as a dict
             response_data = {
-                'output': output,
-                'file': {
-                    'filename': filename_output,
-                    'content': base64_content,
-                    'mimetype': 'audio/wav'
-                }
+                'output': output# ,
+                # 'file': {
+                #     'filename': filename_output,
+                #     'content': base64_content,
+                #     'mimetype': 'audio/wav'
+                # }
             }
 
             # Make a JSON response with the data
@@ -72,7 +72,7 @@ def create_blueprint(socketio):
         try:
             output = generate_chat(data) # Use received text data as input for GPT-4
             filename_output = "output_gpt4.wav"
-            convert_text_to_speech(output, filename_output) # Convert the output to speech
+            # convert_text_to_speech(output, filename_output) # Convert the output to speech
             # emit an event 'response' with the output audio file as an argument
             socketio.emit('response', {'file': filename_output})
         except KeyError:
