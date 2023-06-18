@@ -59,10 +59,9 @@ def create_blueprint(socketio):
             url = "https://api.hume.ai/v0/batch/jobs/" + job_id + "/predictions"
             headers = {
                 "accept": "application/json; charset=utf-8",
-                "X-Hume-Api-Key": "B6aoq9ayCvV3V3zXE6pBftxHgHfOBvvggU8mjXJlwOpdSX9m"
+                "X-Hume-Api-Key": "<YOUR_API_KEY>"
             }
-            # print("job id == ", job_id)
-            # print("url == ", url)
+
             max_attempts = 10
             attempts = 0
             while attempts < max_attempts:
