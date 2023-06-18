@@ -18,11 +18,7 @@ import {
   Box,
 } from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-// import ImageIcon from "@mui/icons-material/Image";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-// import MenuIcon from "@mui/icons-material/Menu";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import MessagePopperButton from "./MessagePopperButton";
 import SideDrawer from "./SideDrawer";
@@ -32,6 +28,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ElderlyWomanIcon from '@mui/icons-material/ElderlyWoman';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 
 const styles = (theme) => ({
   appBar: {
@@ -154,56 +151,6 @@ function NavBar(props) {
 
   const menuItems = [
     {
-      link: "/c/dashboard",
-      name: "Dashboard",
-      onClick: closeMobileDrawer,
-      icon: {
-        desktop: (
-          <DashboardIcon
-            className={
-              selectedTab === "Dashboard" ? classes.textPrimary : "text-white"
-            }
-            fontSize="small"
-          />
-        ),
-        mobile: <DashboardIcon className="text-white" />,
-      },
-    },
-    // {
-    //   link: "/c/posts",
-    //   name: "Posts",
-    //   // onClick: closeMobileDrawer,
-    //   icon: {
-    //     desktop: (
-    //       // <ImageIcon
-    //       //   className={
-    //       //     selectedTab === "Posts" ? classes.textPrimary : "text-white"
-    //       //   }
-    //       //   fontSize="small"
-    //       // />
-    //     ),
-    //     mobile: <ImageIcon className="text-white" />,
-    //   },
-    // },
-    // {
-    //   link: "/c/subscription",
-    //   name: "Subscription",
-    //   onClick: closeMobileDrawer,
-    //   icon: {
-    //     desktop: (
-    //       <AccountBalanceIcon
-    //         className={
-    //           selectedTab === "Subscription"
-    //             ? classes.textPrimary
-    //             : "text-white"
-    //         }
-    //         fontSize="small"
-    //       />
-    //     ),
-    //     mobile: <AccountBalanceIcon className="text-white" />,
-    //   },
-    // },
-    {
       link: "/c/young",
       name: "Young",
       onClick: closeMobileDrawer,
@@ -265,6 +212,24 @@ function NavBar(props) {
           <PowerSettingsNewIcon className="text-white" fontSize="small" />
         ),
         mobile: <PowerSettingsNewIcon className="text-white" />,
+      },
+    },
+    {
+      link: "/c/datacenter",
+      name: "DataCenter",
+      onClick: closeMobileDrawer,
+      icon: {
+        desktop: (
+          <DocumentScannerIcon
+            className={
+              selectedTab === "DataCenter"
+                ? classes.textPrimary
+                : "text-white"
+            }
+            fontSize="small"
+          />
+        ),
+        mobile: <DocumentScannerIcon className="text-white" />,
       },
     },
   ];

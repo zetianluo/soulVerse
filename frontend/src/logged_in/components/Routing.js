@@ -7,6 +7,7 @@ import PropsRoute from "../../shared/components/PropsRoute";
 import Old from "./chatbot/ChatbotVideo";
 import Funeral from "./chatbot/Young/ChatbotVideoYoung";
 import Young from "./chatbot/ChatbotVideo(after)";
+import DataCenter from "./datacenter/DataCenter";
 import useLocationBlocker from "../../shared/functions/useLocationBlocker";
 
 const styles = (theme) => ({
@@ -63,6 +64,7 @@ function Routing(props) {
     selectSubscription,
     selectOld,
     selectYoung,
+    selectDataCenter,
     openAddBalanceDialog,
   } = props;
   useLocationBlocker();
@@ -80,6 +82,10 @@ function Routing(props) {
         <PropsRoute
           path = "/c/young"
           component={Young}
+        />
+        <PropsRoute
+          path = "/c/datacenter"
+          component={DataCenter}
         />
         <PropsRoute
           path=""

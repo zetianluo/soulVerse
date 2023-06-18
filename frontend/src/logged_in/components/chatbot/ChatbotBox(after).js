@@ -35,6 +35,7 @@ const useStyles = makeStyles({
     backgroundImage: 'linear-gradient(45deg, #888888 30%, #CCCCCC 90%)',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
   },
+  
   chatList: {
     overflowY: 'scroll',
     marginBottom: '10px',
@@ -90,24 +91,6 @@ function ChatBox() {
     }
     setListening(!listening);
   };
-
-// const handleSend = (event) => {
-//   event.preventDefault();
-//   if (input.trim() !== '') {
-//     setMessages([...messages, {text: input, sender: 'user'}]); // User message
-//     axios.post('/gpt4', {
-//       message: input
-//     })
-//     .then(function (response) {
-//       let output = response.data.output; // the output from GPT-4 API
-//       setMessages([...messages, {text: input, sender: 'user'}, {text: output, sender: 'robot'}]); // Robot message
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-//     setInput('');
-//   }
-// };
 
 const handleSend = (event) => {
   event.preventDefault();
