@@ -114,7 +114,6 @@ export default props => {
 
   return (
     <div className={classes.appContainer}>
-      <h1 className={classes.title}>Your Title Here</h1>
       <div className={classes.frame}>
         <div className={classes.videoBox}>
           <Player
