@@ -1,5 +1,5 @@
 import "video-react/dist/video-react.css";
-import video from './look_after.mp4';
+import video from './Second.mp4';
 import filmRollFrame from './film_roll_transparent.png';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    height: '80vh', 
+    height: '50vh',
+    width:'50vw' 
   },
   outerFrame :{
     border: '1px solid #ffffff',
@@ -35,11 +36,11 @@ const useStyles = makeStyles({
 export default props => {
   const classes = useStyles();
   return (
-    <div style={{ display: 'flex', height: '100vh', justifyContent: 'center', alignItems: 'center' }}>
-      <div className={classes.outerFrame} style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ display: 'flex', height: '70vh', width: '60vw', justifyContent: 'center', alignItems: 'center' }}>
+      <div className={classes.ouSterFrame} style={{ width: '50vw', height: '40vh' }}>
         <div className={classes.frame}>
-          <div className={classes.filmRoll} style={{ width: '85%', height: '100%' }}>
-            <Player
+          <div className={classes.filmRoll} style={{ width: '40vw', height: '60vh' }}>
+            <video
               playsInline
               src={video}
               autoPlay={true}
@@ -48,6 +49,7 @@ export default props => {
               muted={true}
               autoHide={true}
               autoHideTime={100}
+              width='600vw'
             />
           </div>
         </div>

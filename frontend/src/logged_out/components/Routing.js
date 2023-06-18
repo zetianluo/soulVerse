@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
 import PropsRoute from "../../shared/components/PropsRoute";
 import Home from "./home/Home";
-import MUI from "./home/MUI";
 import useLocationBlocker from "../../shared/functions/useLocationBlocker";
 
 function Routing(props) {

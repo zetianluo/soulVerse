@@ -1,6 +1,6 @@
 import "video-react/dist/video-react.css";
 import './App.css';
-import video from './video.mp4';
+import video from './First.mp4';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { Player } from 'video-react';
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     marginTop: '130px',
   },
   videoBox: {
-        width: '43vw' ,// '42.7vw',
+        width: '48vw' ,// '42.7vw',
         height: '100%',
   },
   chatBox: {
@@ -42,15 +42,18 @@ export default props => {
     <div className={classes.appContainer}>
       <div className={classes.frame}>
         <div className={classes.videoBox}>
-          <Player
+        <video
             playsInline
             src={video}
             autoPlay={true}
-            loop = {true}
-            bigPlayButton={false}
-            muted={true}
-            autoHide={true}
-            autoHideTime={100}
+            controls={false}
+            style={{ 
+              pointerEvents: "none",
+              width: '60vw', // Scale the width to fill its container
+              height: '80vh', // Scale the height to fill its container
+              // objectFit: 'cover' // Make the video cover its container
+              marginLeft: '-110px'
+            }} 
           />
         </div>
         <div className={classes.chatBox}>
