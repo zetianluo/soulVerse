@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
+import axios from 'axios';
 
 const useStyles = makeStyles({
   container: {
@@ -65,10 +66,42 @@ const useStyles = makeStyles({
 function DataCenter() {
   const classes = useStyles();
   const [selectedFile, setSelectedFile] = useState(null);
+  const [apiData, setApiData] = useState(null);
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0].name);
-  }
+const handleFileChange = (event) => {
+  console.log("File selected");
+  setSelectedFile(event.target.files[0]);
+
+  // Start upload immediately upon file selection
+  handleFileUpload(event.target.files[0]);
+}
+
+const handleFileUpload = (file) => {
+  console.log("Uploading file");
+  
+  // Create a new FormData object and append the file
+  const formData = new FormData();
+  formData.append('file', file);
+  
+  // Make a POST request to the Flask server
+  axios.post('/txt_hume', formData)
+    .then(response => {
+      // Handle the response from the Flask server
+      console.log(response.data);
+      setApiData(response.data);
+    })
+    .catch(error => {
+      console.error('There was an error!', error);
+    });
+};
+  useEffect(() => {
+    fetch('http://127.0.0.1:5001')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setApiData(data);
+      });
+  }, []);
   
   return (
     <div className={classes.container}>
@@ -77,10 +110,11 @@ function DataCenter() {
           type="file"
           className={classes.dropdown}
           onChange={handleFileChange}
+          onClick={() => console.log("Clicked")}
         />
       </div>
       <div className={classes.box}>
-        <input className={classes.input} placeholder="Type something..." />
+        <input className={classes.input} placeholder="Emotion Results" />
       </div>
       <div className={classes.box}>
         <img className={classes.image} src="https://via.placeholder.com/150" alt="example" />
