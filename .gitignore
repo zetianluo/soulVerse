@@ -47,3 +47,5 @@ Thumbs.db
 *.wmv
 
 .chroma/*
+output_gpt4.wav
+message.txt
